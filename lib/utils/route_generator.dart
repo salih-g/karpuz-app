@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:karpuz/main.dart';
 import 'package:karpuz/pages/feed_page.dart';
 import 'package:karpuz/pages/login_page.dart';
 import 'package:karpuz/pages/post_page.dart';
