@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:karpuz/pages/feed_page.dart';
-import 'package:karpuz/pages/login_page.dart';
-import 'package:karpuz/pages/post_page.dart';
-import 'package:karpuz/pages/profile_page.dart';
-import 'package:karpuz/pages/register_page.dart';
 import 'package:karpuz/utils/colors.dart';
+import 'package:karpuz/utils/route_generator.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -12,13 +8,8 @@ void main() {
     theme: ThemeData.dark().copyWith(
       scaffoldBackgroundColor: backgroundColor,
     ),
-    home: const FeedPage(),
+    initialRoute: '/',
     debugShowCheckedModeBanner: false,
-    routes: {
-      'postPage': (_) => const PostPage(),
-      'profilePage': (_) => const ProfilePage(),
-      'loginPage': (_) => const LoginPage(),
-      'registerPage': (_) => const RegisterPage(),
-    },
+    onGenerateRoute: RouteGenerator.generateRoute,
   ));
 }
