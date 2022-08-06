@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:karpuz/models/post.model.dart';
+import 'package:karpuz/models/feed.model.dart';
 import 'package:http/http.dart' as http;
+import 'package:karpuz/models/post.model.dart';
 
 class Api {
   Future<List<PostModel>> getPosts() async {
@@ -9,7 +10,7 @@ class Api {
       final response = await http.get(url);
 
       if (response.statusCode == 200) {
-        return postsModelFromJson(response.body.toString());
+        return feedModelFromJson(response.body.toString());
       }
       return <PostModel>[];
     } catch (e) {

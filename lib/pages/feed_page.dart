@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:karpuz/models/post.model.dart';
 import 'package:karpuz/utils/api.dart';
 
@@ -10,6 +11,24 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
+  List<PostModel>? feed;
+  bool isLoaded = false;
+
+  @override
+  void initState() {
+    super.initState();
+    getFeed();
+  }
+
+  getFeed() async {
+    feed = await Api().getPosts();
+    if (feed != null) {
+      setState(() {
+        isLoaded = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
