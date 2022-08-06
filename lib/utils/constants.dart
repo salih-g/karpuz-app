@@ -7,10 +7,11 @@ const textGray500 = Color.fromRGBO(107, 114, 128, 1);
 const textGray600 = Color.fromRGBO(75, 85, 99, 1);
 
 const appBarTitleStyle = TextStyle(
-    color: textGray600,
-    fontFamily: 'OpenSans',
-    fontWeight: FontWeight.bold,
-    fontSize: 20);
+  color: textGray600,
+  fontFamily: 'OpenSans',
+  fontWeight: FontWeight.bold,
+  fontSize: 20,
+);
 
 const titleStyle = TextStyle(
   color: textGray600,
