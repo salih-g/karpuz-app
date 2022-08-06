@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:karpuz/models/post.model.dart';
 import 'package:karpuz/services/post_service.dart';
+import 'package:karpuz/widgets/app_bar.dart';
+import 'package:karpuz/widgets/post_card.dart';
 // import 'package:karpuz/utils/api.dart';
 
 class FeedPage extends StatefulWidget {
@@ -18,24 +20,12 @@ class _FeedPageState extends State<FeedPage> {
   @override
   void initState() {
     super.initState();
-    // getFeed();
   }
-
-  // getFeed() async {
-  //   feed = await Api().getPosts();
-  //   if (feed != null) {
-  //     setState(() {
-  //       isLoaded = true;
-  //     });
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Karpuz"),
-      ),
+      appBar: const KarpuzAppBar(),
       body: FutureBuilder<dynamic>(
         future: PostService.getPosts(),
         builder: (_, snapshot) {
@@ -44,10 +34,7 @@ class _FeedPageState extends State<FeedPage> {
               child: CircularProgressIndicator(),
             );
           } else {
-            final data = snapshot.data;
-            return Center(
-              child: Text(data!.first.username.toString()),
-            );
+            return const PostCard();
           }
         },
       ),
