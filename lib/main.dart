@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:karpuz/utils/colors.dart';
+import 'package:karpuz/utils/constants.dart';
 import 'package:karpuz/utils/route_generator.dart';
 
 void main() {

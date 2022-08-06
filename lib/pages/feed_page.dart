@@ -25,7 +25,9 @@ class _FeedPageState extends State<FeedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const KarpuzAppBar(),
+      appBar: const KarpuzAppBar(
+        title: "Karpuz",
+      ),
       body: FutureBuilder<dynamic>(
         future: PostService.getPosts(),
         builder: (_, snapshot) {
