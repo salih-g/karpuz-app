@@ -32,8 +32,16 @@ const thinTextStyle = TextStyle(
   fontFamily: 'OpenSans',
   fontSize: 12,
 );
+
 const navbarStyle = TextStyle(
   color: iconDark,
+  fontFamily: 'OpenSans',
+  fontWeight: FontWeight.bold,
+  fontSize: 11,
+);
+
+const navbarStyleSelected = TextStyle(
+  color: mainRed,
   fontFamily: 'OpenSans',
   fontWeight: FontWeight.bold,
   fontSize: 11,

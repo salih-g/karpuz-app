@@ -1,13 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:karpuz/utils/constants.dart';
 
-class KarpuzNav extends StatelessWidget {
+class KarpuzNav extends StatefulWidget {
   final ValueChanged<int> onItemSelected;
 
   const KarpuzNav({
     Key? key,
     required this.onItemSelected,
   }) : super(key: key);
+
+  @override
+  State<KarpuzNav> createState() => _KarpuzNavState();
+}
+
+class _KarpuzNavState extends State<KarpuzNav> {
+  var selectedIndex = 0;
+
+  void handleItemSelected(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+    widget.onItemSelected;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +32,25 @@ class KarpuzNav extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _NavigationBarItem(
-              label: "Home",
-              icon: CupertinoIcons.home,
-              index: 0,
-              onTap: onItemSelected),
-          _NavigationBarItem(
-            label: "Create Post",
-            icon: CupertinoIcons.add_circled_solid,
-            index: 1,
-            onTap: onItemSelected,
+            index: 0,
+            label: "Home",
+            icon: CupertinoIcons.home,
+            isSelected: (selectedIndex == 0),
+            onTap: handleItemSelected,
           ),
           _NavigationBarItem(
-            label: 'Profile',
-            icon: CupertinoIcons.person_2_fill,
+            index: 1,
+            label: "Create Post",
+            isSelected: (selectedIndex == 1),
+            icon: CupertinoIcons.add_circled_solid,
+            onTap: handleItemSelected,
+          ),
+          _NavigationBarItem(
             index: 2,
-            onTap: onItemSelected,
+            label: 'Profile',
+            isSelected: (selectedIndex == 2),
+            icon: CupertinoIcons.person_2_fill,
+            onTap: handleItemSelected,
           ),
         ],
       ),
@@ -44,6 +62,7 @@ class _NavigationBarItem extends StatelessWidget {
   final String label;
   final int index;
   final IconData icon;
+  final bool isSelected;
   final ValueChanged<int> onTap;
 
   const _NavigationBarItem({
@@ -52,11 +71,13 @@ class _NavigationBarItem extends StatelessWidget {
     required this.icon,
     required this.index,
     required this.onTap,
+    this.isSelected = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: () {
         onTap(index);
       },
@@ -67,7 +88,7 @@ class _NavigationBarItem extends StatelessWidget {
           children: [
             Icon(
               icon,
-              color: iconDark,
+              color: isSelected ? mainRed : iconDark,
               size: 20,
             ),
             const SizedBox(
@@ -75,7 +96,7 @@ class _NavigationBarItem extends StatelessWidget {
             ),
             Text(
               label,
-              style: navbarStyle,
+              style: isSelected ? navbarStyleSelected : navbarStyle,
             ),
           ],
         ),
