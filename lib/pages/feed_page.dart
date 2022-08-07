@@ -1,10 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:karpuz/models/post.model.dart';
 import 'package:karpuz/services/post_service.dart';
+import 'package:karpuz/utils/constants.dart';
 import 'package:karpuz/widgets/app_bar.dart';
 import 'package:karpuz/widgets/post_card.dart';
-// import 'package:karpuz/utils/api.dart';
 
 class FeedPage extends StatefulWidget {
   const FeedPage({Key? key}) : super(key: key);
@@ -14,9 +14,6 @@ class FeedPage extends StatefulWidget {
 }
 
 class _FeedPageState extends State<FeedPage> {
-  List<PostModel>? feed;
-  bool isLoaded = false;
-
   @override
   void initState() {
     super.initState();
@@ -24,22 +21,17 @@ class _FeedPageState extends State<FeedPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const KarpuzAppBar(
-        title: "Karpuz",
-      ),
-      body: FutureBuilder<dynamic>(
-        future: PostService.getPosts(),
-        builder: (_, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else {
-            return const PostCard();
-          }
-        },
-      ),
+    return FutureBuilder<dynamic>(
+      future: PostService.getPosts(),
+      builder: (_, snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else {
+          return const PostCard();
+        }
+      },
     );
   }
 }

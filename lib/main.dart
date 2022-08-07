@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:karpuz/utils/constants.dart';
-import 'package:karpuz/utils/route_generator.dart';
+import 'package:karpuz/screens/splash_screen.dart';
 
 void main() {
   runApp(
-    MaterialApp(
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: backgroundColor,
-      ),
-      initialRoute: '/',
+    const MaterialApp(
+      title: "Karpuz",
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: RouteGenerator.generateRoute,
+      home: SplashScreen(),
     ),
   );
 }

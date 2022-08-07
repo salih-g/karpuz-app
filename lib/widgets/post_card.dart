@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karpuz/utils/constants.dart';
 
 class PostCard extends StatefulWidget {
   const PostCard({Key? key}) : super(key: key);
