@@ -20,7 +20,7 @@ class _KarpuzNavState extends State<KarpuzNav> {
     setState(() {
       selectedIndex = index;
     });
-    widget.onItemSelected;
+    widget.onItemSelected(index);
   }
 
   @override
